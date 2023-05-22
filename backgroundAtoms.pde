@@ -1,18 +1,20 @@
 import java.util.Collections;
 
-class Atom {
-   Particle atom;
+class backgroundAtom {
+   BehaviorParticle atom;
    float x;
    float y;
    float size;
    ArrayList<eParticle> particles = new ArrayList<eParticle>();
    String element;
    int layers;
-   Atom(float x, float y, float size, int protons, int neutrons, int electrons, String element) {
+   backgroundAtom(float x, float y, float size, int protons, int neutrons, int electrons, String element) {
      float particleSize = size/3.125;
      this.x = x; this.y = y; this.size = size;
      this.element = element;
-     atom = system.makeParticle(x, y);
+     atom = system.makeParticle(BehaviorParticle.class);
+     atom.position().x = x;
+     atom.position().y = y;
      atom.mass(protons + neutrons);
      atom.radius(200);
      for(int i = 0; i < neutrons; i++) {
